@@ -5,6 +5,6 @@ import compress from 'astro-compress';
 // https://astro.build/config
 export default defineConfig({
   site: 'https://conallfahey.github.io',
-  base: '/OBSKURA_US',
+  base: '/ObskuraUS',
   integrations: [tailwind(), compress()],
 });
