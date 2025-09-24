@@ -425,24 +425,15 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <script is:inline>
-    // Define toggleSection function globally so onclick handlers can access it
-    window.toggleSection = function(sectionId) {
-        const content = document.getElementById(sectionId + '-content');
-        const icon = document.getElementById(sectionId + '-icon');
-        const button = document.querySelector('button[aria-controls="' + sectionId + '-content"]');
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      window.toggleSection = function(sectionId) {
+        var content = document.getElementById(sectionId + '-content');
+        var icon = document.getElementById(sectionId + '-icon');
+        var button = document.querySelector('button[aria-controls="' + sectionId + '-content"]');
         
-        // Error handling for missing elements
-        if (!content) {
-          console.error('Content element not found: ' + sectionId + '-content');
-          return;
-        }
-        if (!icon) {
-          console.error('Icon element not found: ' + sectionId + '-icon');
-          return;
-        }
-        if (!button) {
-          console.error('Button element not found for: ' + sectionId);
+        if (!content || !icon || !button) {
+          console.error('Required elements not found for section: ' + sectionId);
           return;
         }
         
@@ -456,5 +447,6 @@ import Layout from '../layouts/Layout.astro';
           button.setAttribute('aria-expanded', 'false');
         }
       };
+    });
   </script>
 </Layout>
