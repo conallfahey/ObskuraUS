@@ -42,7 +42,7 @@ const links = [
           class="h-8 sm:h-14 w-auto"
           width="65"
           height="40"
-          :src="$store.theme.isDark ? '/assets/logo-inverted.svg' : '/assets/logo.svg'"
+          :src="$store.theme.isDark ? `${import.meta.env.BASE_URL}assets/logo-inverted.svg` : `${import.meta.env.BASE_URL}assets/logo.svg`"
           alt="Stone"
         />
       </a>
