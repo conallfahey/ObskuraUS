@@ -1,5 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+
+// TypeScript interface for window object
+declare global {
+  interface Window {
+    toggleSection: (sectionId: string) => void;
+  }
+}
 ---
 
 <Layout
@@ -427,7 +434,7 @@ import Layout from '../layouts/Layout.astro';
 
   <script>
     // Define toggleSection function globally so onclick handlers can access it
-    (window as any).toggleSection = function(sectionId: string) {
+    window.toggleSection = function(sectionId: string) {
         const content = document.getElementById(sectionId + '-content');
         const icon = document.getElementById(sectionId + '-icon');
         const button = document.querySelector('button[aria-controls="' + sectionId + '-content"]');
