@@ -14,7 +14,7 @@ const { description, title } = Astro.props;
 ---
 
 <!DOCTYPE html>
-<html lang="en" x-cloak x-data :class="{ 'dark': $store.theme.isDark }">
+<html lang="en" x-cloak x-data="{ theme: $store.theme }" :class="{ 'dark': theme.isDark }">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
@@ -42,31 +42,31 @@ const { description, title } = Astro.props;
     </style>
     <script>
       import Alpine from 'alpinejs';
+      // @ts-ignore
       import collapse from '@alpinejs/collapse';
 
       Alpine.plugin(collapse);
 
       Alpine.store('theme', {
-        init() {
-          this.isDark = (() => {
-            if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
-              return localStorage.getItem('theme') === 'dark';
-            }
-            if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-              return true;
-            }
-            return false;
-          })();
-        },
-
-        isDark: false,
+        isDark: (() => {
+          if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
+            return localStorage.getItem('theme') === 'dark';
+          }
+          if (typeof window !== 'undefined' && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            return true;
+          }
+          return false;
+        })(),
 
         toggle() {
+          // @ts-ignore - Alpine.js store context typing
           this.isDark = !this.isDark;
+          // @ts-ignore - Alpine.js store context typing
           localStorage.setItem('theme', this.isDark ? 'dark' : 'light');
         },
       });
 
+      // @ts-ignore - Alpine.js global assignment
       window.Alpine = Alpine;
       Alpine.start();
     </script>
