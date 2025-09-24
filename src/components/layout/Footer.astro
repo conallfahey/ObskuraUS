@@ -61,7 +61,8 @@ const bottomLinks = [
           class="h-8 w-auto"
           width="65"
           height="40"
-          :src="$store.theme.isDark ? `${import.meta.env.BASE_URL}assets/logo-inverted.svg` : `${import.meta.env.BASE_URL}assets/logo.svg`"
+          src="/ObskuraUS/assets/logo.svg"
+          x-bind:src="$store.theme.isDark ? '/ObskuraUS/assets/logo-inverted.svg' : '/ObskuraUS/assets/logo.svg'"
           alt="Stone"
         />
         <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
