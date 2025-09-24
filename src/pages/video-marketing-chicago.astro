@@ -425,7 +425,7 @@ import Layout from '../layouts/Layout.astro';
     </div>
   </section>
 
-  <script>
+  <script is:inline>
     // Define toggleSection function globally so onclick handlers can access it
     window.toggleSection = function(sectionId) {
         const content = document.getElementById(sectionId + '-content');
