@@ -15,17 +15,17 @@ const bottomLinks = [
     links: [
       {
         name: 'Home',
-        href: '/',
+        href: `${import.meta.env.BASE_URL}`,
         isExternal: false,
       },
       {
         name: 'About',
-        href: '/about',
+        href: `${import.meta.env.BASE_URL}about`,
         isExternal: false,
       },
       {
         name: 'Contact',
-        href: '/contact',
+        href: `${import.meta.env.BASE_URL}contact`,
         isExternal: false,
       },
     ],
@@ -35,12 +35,12 @@ const bottomLinks = [
     links: [
       {
         name: '404',
-        href: '/404',
+        href: `${import.meta.env.BASE_URL}404`,
         isExternal: false,
       },
       {
         name: 'Styleguide',
-        href: '/styleguide',
+        href: `${import.meta.env.BASE_URL}styleguide`,
         isExternal: false,
       },
     ],
@@ -63,7 +63,7 @@ const bottomLinks = [
           height="40"
           src="/ObskuraUS/assets/logo.svg"
           x-bind:src="$store.theme.isDark ? '/ObskuraUS/assets/logo-inverted.svg' : '/ObskuraUS/assets/logo.svg'"
-          alt="Stone"
+          alt="Obskura"
         />
         <p class="text-primary-950/70 dark:text-primary-200/70 text-base">
           Obskura | Video Marketing | Chicago
